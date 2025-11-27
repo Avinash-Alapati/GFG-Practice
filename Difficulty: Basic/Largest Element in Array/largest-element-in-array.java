@@ -1,12 +1,12 @@
 class Solution {
     public static int largest(int[] arr) {
-        int max = 0;
-        
-        for (int i = 0; i < arr.length; i++){
-            if (arr[i] > max) {
-                max = arr[i];
+        int largest = Integer.MIN_VALUE;
+        int n = arr.length;
+        for (int i = 0; i < n; i++){
+            if (arr[i] > largest) {
+                largest = arr[i];
             }
         }
-        return max;
+        return largest;
     }
 }
