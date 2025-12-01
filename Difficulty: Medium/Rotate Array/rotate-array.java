@@ -2,6 +2,17 @@
 
 class Solution {
     static void rotateArr(int arr[], int d) {
+        // bruteforceSol(arr , d);
+        
+        // Optimal in place
+        int n = arr.length;
+        d = d % n;
+        reverseArr(arr , 0 , d - 1);
+        reverseArr(arr , d , n - 1);
+        reverseArr(arr , 0 , n - 1);
+    }
+    
+    public static int[] bruteforceSol(int[] arr , int d){
         // Bruteforce -> Copy kth elem --> Shift rem elem --> put it back !!
         // BruteForce - TC -> O(d) + O(n-d) + O(d) = O(n + d);
         // Extra Space SC -> O(d);
@@ -23,7 +34,19 @@ class Solution {
         for (int i = 0; i < d; i++){
             arr[n - d + i] = temp[i];
         }
-        
-        
+        return arr;
+    }
+    
+    // Reverse Function for optimal solution
+    public static int[] reverseArr(int arr[] , int start , int end){
+        while(start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            
+            start++;
+            end--;
+        }
+        return arr;
     }
 }
