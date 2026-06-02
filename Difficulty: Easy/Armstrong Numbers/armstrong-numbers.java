@@ -1,20 +1,20 @@
 // User function Template for Java
 class Solution {
     static boolean armstrongNumber(int n) {
-        int orgNum = n;
+        int org = n;
+        int cube = 0;
         int sum = 0;
-        
-        while (n != 0){
-            int rem = n % 10;
-            n = n /10;
-            int cube = rem * rem * rem;
-            sum += cube;
+        while (n > 0){
+            int lastDigit = n % 10;
+            cube = lastDigit * lastDigit * lastDigit;
+            sum = sum + cube;
+            n = n/10;
         }
         
-        if (orgNum == sum) {
+        if(org == sum) {
             return true;
-        } else {
-            return false;
         }
+        
+        return false;
     }
 }
